@@ -38,7 +38,7 @@ public class MathTest {
     })
     public void testReciprocal(double base, double exponent) {
 
-        Assertions.assertEquals((1/(Math.pow(base,-1*exponent))),Math.pow(base,exponent),0.00000001);
+        Assertions.assertEquals((1/(Math.pow(base,exponent))),Math.pow(base,-exponent));
 
 
     }
@@ -60,7 +60,7 @@ public class MathTest {
             "-7.4, -8.3, -9.2"
     })
     public void testMultiplying(double base, double a, double b) {
-Assertions.assertEquals(Math.pow(base,a+b),Math.pow(base,a)*Math.pow(base,b),0.00000001);
+Assertions.assertEquals(Math.pow(base,a+b),Math.pow(base,a)*Math.pow(base,b));
 
     }
 
@@ -81,7 +81,7 @@ Assertions.assertEquals(Math.pow(base,a+b),Math.pow(base,a)*Math.pow(base,b),0.0
             "-7.4, -8.3, -9.2"
     })
     public void testDividing(double base, double a, double b) {
-Assertions.assertEquals(Math.pow(base,a-b),Math.pow(base,a)/Math.pow(base,b),0.00000001);
+Assertions.assertEquals(Math.pow(base,a-b),Math.pow(base,a)/Math.pow(base,b));
     }
 
 
@@ -101,27 +101,27 @@ Assertions.assertEquals(Math.pow(base,a-b),Math.pow(base,a)/Math.pow(base,b),0.0
             "-7.4, -8.3, -9.2"
     })
     public void testNestedPowers(double base, double a, double b) {
-Assertions.assertEquals(Math.pow(base,a*b),Math.pow(Math.pow(base,a),b),0.000000001);
+Assertions.assertEquals(Math.pow(base,a*b),Math.pow(Math.pow(base,a),b));
     }
 
 
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testZeroPower(double base) {
-Assertions.assertEquals(1,Math.pow(base,0),0.00000001);
+Assertions.assertEquals(1,Math.pow(base,0));
     }
 
 
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testOnePower(double base) {
-Assertions.assertEquals(base,Math.pow(base,1),0.00000001);
+Assertions.assertEquals(base,Math.pow(base,1));
     }
 
 
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testZeroBase(double exponent) {
-Assertions.assertEquals(0,Math.pow(0,exponent),0.00000001);
+Assertions.assertEquals(0,Math.pow(0,Math.abs(exponent)));
     }
 }
